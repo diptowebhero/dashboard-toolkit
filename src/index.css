@@ -1,0 +1,274 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210, 40, 98;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0, 78%, 52%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+@layer base {
+  body {
+    @apply bg-background font-poppins text-foreground;
+  }
+
+  /* Sidebar style start*/
+  .sidebar-head {
+    @apply flex flex-col overflow-y-auto duration-300 ease-linear px-4;
+  }
+  .sidebar-nav {
+    @apply py-4 px-4 lg:mt-2 lg:px-6;
+  }
+
+  .sidebar-menu-item {
+    @apply relative flex items-center gap-3 rounded-sm py-2 px-4 font-medium text-black  hover:bg-slate-300 duration-300 ease-in-out;
+  }
+
+  .sidebar-submenu-item {
+    @apply relative flex items-center gap-3 rounded-sm py-2 px-12 font-medium duration-300 ease-in-out text-black hover:bg-slate-300;
+  }
+
+  /* width  */
+  /* ::-webkit-scrollbar {
+    width: 0;
+    height: 8px;
+  } */
+
+  /* Track  */
+  /* ::-webkit-scrollbar-track {
+  border-radius: 50px;
+  background: transparent;
+} */
+
+  /* Handle  */
+  /* ::-webkit-scrollbar-thumb {
+  background: #151f37;
+  border-radius: 50px;
+} */
+
+  /* Sidebar base styles */
+  .sidebar {
+    @apply fixed bottom-0 top-0 z-[60] h-screen w-72 -translate-x-full overflow-hidden bg-white shadow-lg transition-all duration-300 ease-in-out dark:bg-slate-800 lg:translate-x-0;
+  }
+
+  .sidebar.collapsed {
+    @apply lg:w-20;
+  }
+
+  .sidebar.collapsed:hover {
+    @apply w-72;
+  }
+
+  .sidebar.expanded {
+    @apply translate-x-0;
+  }
+
+  /* Sidebar header */
+  .sidebar-header {
+    @apply flex h-16 w-full items-center gap-4 px-4;
+  }
+
+  .sidebar-logo-icon {
+    @apply inline-block flex-shrink-0 fill-current text-red-400;
+  }
+
+  .sidebar-logo-text {
+    @apply flex flex-col;
+  }
+
+  .sidebar.collapsed .sidebar-logo-text {
+    @apply hidden;
+  }
+
+  .sidebar.collapsed:hover .sidebar-logo-text {
+    @apply flex;
+  }
+
+  /* Sidebar content */
+  .sidebar-content {
+    @apply mt-1 overflow-auto;
+    height: calc(100vh - 4rem);
+  }
+  .sidebar-content li {
+    @apply cursor-pointer;
+  }
+
+  .simplebar-content > li {
+    @apply px-[18px];
+  }
+
+  /* Sidebar menu */
+  .sidebar-menu {
+    @apply flex w-full items-center gap-2 rounded p-1 text-sm transition-colors duration-150 hover:bg-[#ffe9f3];
+  }
+
+  .sidebar-menu-icon {
+    @apply flex h-9 w-9 min-w-max flex-shrink-0 items-center justify-center text-slate-500;
+  }
+
+  .sidebar-menu-icon svg {
+    @apply h-5 w-5;
+  }
+
+  .sidebar-menu-arrow {
+    @apply ml-auto mr-2 text-slate-600 transition-transform duration-150;
+  }
+
+  .sidebar-menu-arrow svg {
+    @apply h-4 w-4;
+  }
+
+  .sidebar-menu-arrow.rotate {
+    @apply rotate-90 transform;
+  }
+
+  .sidebar-menu:hover .sidebar-menu-icon,
+  .sidebar-menu:hover .sidebar-menu-arrow {
+    @apply text-slate-600 dark:text-slate-200;
+  }
+
+  .sidebar-menu.active {
+    @apply bg-custom-gradient text-[#CE0059];
+  }
+
+  .sidebar-menu.active .sidebar-menu-icon {
+    @apply rounded-md bg-[#CE0059] text-slate-200;
+  }
+
+  .sidebar-menu.active .sidebar-menu-arrow {
+    @apply text-[#f5f3ff] dark:text-slate-200;
+  }
+  .sidebar-menu.active .sidebar-menu-text {
+    @apply text-white;
+  }
+  .sidebar.collapsed .sidebar-menu-text {
+    @apply lg:hidden;
+  }
+  .sidebar.collapsed .logo-text {
+    @apply lg:hidden;
+  }
+  .sidebar.collapsed:hover .logo-text {
+    @apply block;
+  }
+
+  .sidebar.collapsed:hover .sidebar-menu-text {
+    @apply block;
+  }
+
+  .sidebar.collapsed .sidebar-menu-arrow {
+    @apply hidden;
+  }
+
+  .sidebar.collapsed:hover .sidebar-menu-arrow {
+    @apply block;
+  }
+
+  /* Sidebar submenu */
+  .sidebar-submenu {
+    @apply mt-0.5 h-0 overflow-hidden transition duration-300 ease-in-out;
+  }
+
+  .sidebar-submenu-item {
+    @apply block rounded py-2 pl-12 text-sm transition-colors duration-150   dark:hover:text-slate-200;
+  }
+
+  .sidebar-submenu-item.active {
+    @apply text-red-500 dark:hover:text-white;
+  }
+
+  /* Sidebar menu header */
+  .sidebar-menu-header {
+    @apply pb-2 pl-7 pt-4 text-xs uppercase tracking-widest text-slate-400;
+  }
+
+  /* Sidebar toggle */
+  .sidebar-toggle {
+    @apply text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300;
+  }
+
+  /* Sidebar overlay */
+  .sidebar-overlay {
+    @apply invisible fixed inset-0 z-10 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out lg:hidden;
+  }
+
+  .sidebar-overlay.active {
+    @apply visible;
+  }
+
+  /* Collapsed & Hovered States */
+  .sidebar.collapsed .sidebar-submenu {
+    @apply hidden;
+  }
+
+  .sidebar.collapsed:hover .sidebar-submenu {
+    @apply block;
+  }
+
+  .sidebar.collapsed .sidebar-menu-header {
+    @apply hidden;
+  }
+
+  .sidebar.collapsed:hover .sidebar-menu-header {
+    @apply block;
+  }
+  /* Sidebar style end*/
+
+  /* main content */
+  .wrapper {
+    @apply lg:ml-72 relative flex flex-1 flex-col  duration-300 ease-in-out;
+  }
+  .wrapper.expanded {
+    @apply lg:ml-20;
+  }
+}

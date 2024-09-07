@@ -1,0 +1,172 @@
+// import { logoSmall2 } from "@/assets";
+// import {
+//   ChevronDown,
+//   ChevronRight,
+//   LayoutDashboardIcon,
+//   MailIcon,
+// } from "lucide-react";
+// import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+// import { Link, useLocation } from "react-router-dom";
+// interface SidebarProps {
+//   sidebarOpen: boolean;
+//   setSidebarOpen: Dispatch<SetStateAction<boolean>>;
+// }
+// const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
+//   const { pathname } = useLocation();
+//   const [isHovered, setHovered] = useState(false);
+//   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+//   const sidebarRef = useRef<HTMLDivElement>(null);
+//   const submenuRefs = useRef<{ [key: string]: HTMLUListElement | null }>({});
+
+//   useEffect(() => {
+//     const handleClickOutside = (event: MouseEvent) => {
+//       if (
+//         window.innerWidth < 1024 &&
+//         sidebarRef.current &&
+//         !sidebarRef.current.contains(event.target as Node)
+//       ) {
+//         setSidebarOpen(false);
+//       }
+//     };
+
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => {
+//       document.removeEventListener("mousedown", handleClickOutside);
+//     };
+//   }, [setSidebarOpen]);
+
+//   const toggleSubmenu = (menuName: string) => {
+//     setActiveMenu((prevMenu) => (prevMenu === menuName ? null : menuName));
+//   };
+
+//   // Set the submenu height dynamically
+//   useEffect(() => {
+//     if (activeMenu && submenuRefs.current[activeMenu]) {
+//       const submenu = submenuRefs.current[activeMenu];
+//       if (submenu) {
+//         submenu.style.maxHeight = `${submenu.scrollHeight}px`;
+//       }
+//     }
+//   }, [activeMenu]);
+
+//   const handleSubmenuItemClick = () => {
+//     setActiveMenu(null); // Close the submenu after clicking a submenu item
+//   };
+
+//   return (
+//     <aside
+//       ref={sidebarRef}
+//       onMouseEnter={() => setHovered(true)}
+//       onMouseLeave={() => setHovered(false)}
+//       className={`sidebar ${isHovered ? "hovered" : ""} ${
+//         sidebarOpen ? "collapsed expanded expandedSidebar" : ""
+//       }`}>
+//       <a href='/'>
+//         <div className='sidebar-header'>
+//           <div className='sidebar-logo-icon'>
+//             <img
+//               src={logoSmall2}
+//               className='h-[47px] object-cover'
+//               alt='LOGO'
+//             />
+//           </div>
+//           <div className='flex flex-col logo-text'>
+//             <h1 className='text-xl'>
+//               Admin
+//               <span className='text-[#CE0059] font-semibold'>Dashboard</span>
+//             </h1>
+//             <span className='whitespace-nowrap capitalize text-xs text-slate-400'>
+//               simple & customizable
+//             </span>
+//           </div>
+//         </div>
+//       </a>
+//       <ul className='sidebar-content'>
+//         {/* Dashboard Menu */}
+//         <li className='px-[18px]' onClick={() => toggleSubmenu("dashboard")}>
+//           <Link
+//             to='/'
+//             className={`sidebar-menu ${pathname === "/" ? "active" : ""}`}>
+//             <span className='sidebar-menu-icon'>
+//               <LayoutDashboardIcon />
+//             </span>
+//             <span className='sidebar-menu-text'>Dashboard</span>
+//             <span className='sidebar-menu-arrow'>
+//               {activeMenu === "dashboard" ? <ChevronDown /> : <ChevronRight />}
+//             </span>
+//           </Link>
+
+//           <ul
+//             onClick={handleSubmenuItemClick}
+//             ref={(el) => (submenuRefs.current["dashboard"] = el)}
+//             style={{
+//               height:
+//                 activeMenu === "dashboard"
+//                   ? `${submenuRefs.current["dashboard"]?.scrollHeight}px`
+//                   : "0px",
+//             }}
+//             className={`sidebar-submenu ${
+//               activeMenu === "dashboard" ? "expanded-submenu" : ""
+//             }`}>
+//             <li>
+//               <Link
+//                 to='/'
+//                 className={`sidebar-submenu-item ${
+//                   pathname === "/" ? "active" : ""
+//                 }`}>
+//                 Admin Dashboard
+//               </Link>
+//             </li>
+//             <li>
+//               <Link to='email' className='sidebar-submenu-item'>
+//                 Sales Dashboard
+//               </Link>
+//             </li>
+//           </ul>
+//         </li>
+//         {/* E-commerce Menu */}
+//         <li className='px-[18px]' onClick={() => toggleSubmenu("ecommerce")}>
+//           <Link to='/' className='sidebar-menu '>
+//             <span className='sidebar-menu-icon'>
+//               <LayoutDashboardIcon />
+//             </span>
+//             <span className='sidebar-menu-text'>Ecommerce</span>
+//             <span className='sidebar-menu-arrow'>
+//               {activeMenu === "ecommerce" ? <ChevronDown /> : <ChevronRight />}
+//             </span>
+//           </Link>
+//           <ul
+//             onClick={handleSubmenuItemClick}
+//             ref={(el) => (submenuRefs.current["ecommerce"] = el)}
+//             style={{
+//               height:
+//                 activeMenu === "ecommerce"
+//                   ? `${submenuRefs.current["ecommerce"]?.scrollHeight}px`
+//                   : "0px",
+//             }}
+//             className={`sidebar-submenu ${
+//               activeMenu === "ecommerce" ? "expanded-submenu" : ""
+//             }`}>
+//             <li>
+//               <Link to='email' className='sidebar-submenu-item'>
+//                 Product List
+//               </Link>
+//             </li>
+//           </ul>
+//         </li>
+
+//         <div className='sidebar-menu-header'>Applications</div>
+//         <li className='px-[18px]'>
+//           <Link to='email' className='sidebar-menu'>
+//             <span className='sidebar-menu-icon'>
+//               <MailIcon />
+//             </span>
+//             <span className='sidebar-menu-text'>Email</span>
+//           </Link>
+//         </li>
+//       </ul>
+//     </aside>
+//   );
+// };
+
+// export default Sidebar;

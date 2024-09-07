@@ -11,7 +11,7 @@
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
+    --primary: #ce0059;
     --primary-foreground: 0 0% 98%;
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
@@ -76,30 +76,12 @@
   }
 
   .sidebar-submenu-item {
-    @apply relative flex items-center gap-3 rounded-sm py-2 px-12 font-medium duration-300 ease-in-out text-black hover:bg-slate-300;
+    @apply relative flex items-center gap-3 rounded-sm py-2 px-12 font-normal duration-300 ease-in-out text-black hover:bg-[#ffe9f3] hover:text-primary;
   }
-
-  /* width  */
-  /* ::-webkit-scrollbar {
-    width: 0;
-    height: 8px;
-  } */
-
-  /* Track  */
-  /* ::-webkit-scrollbar-track {
-  border-radius: 50px;
-  background: transparent;
-} */
-
-  /* Handle  */
-  /* ::-webkit-scrollbar-thumb {
-  background: #151f37;
-  border-radius: 50px;
-} */
 
   /* Sidebar base styles */
   .sidebar {
-    @apply fixed bottom-0 top-0 z-[60] h-screen w-72 -translate-x-full overflow-hidden bg-white shadow-lg transition-all duration-300 ease-in-out dark:bg-slate-800 lg:translate-x-0;
+    @apply fixed bottom-0 top-0 z-[60] h-screen w-72 -translate-x-full overflow-hidden bg-white shadow-lg transition-all duration-500 ease-in-out dark:bg-slate-800 lg:translate-x-0;
   }
 
   .sidebar.collapsed {
@@ -150,7 +132,7 @@
 
   /* Sidebar menu */
   .sidebar-menu {
-    @apply flex w-full items-center gap-2 rounded p-1 text-sm transition-colors duration-150 hover:bg-[#ffe9f3];
+    @apply flex w-full items-center gap-2 rounded p-1 text-sm transition-colors duration-150 hover:bg-[#ffe9f3] hover:text-primary;
   }
 
   .sidebar-menu-icon {
@@ -162,7 +144,7 @@
   }
 
   .sidebar-menu-arrow {
-    @apply ml-auto mr-2 text-slate-600 transition-transform duration-150;
+    @apply ml-auto mr-2 text-slate-800 transition-transform duration-150;
   }
 
   .sidebar-menu-arrow svg {
@@ -179,18 +161,18 @@
   }
 
   .sidebar-menu.active {
-    @apply bg-custom-gradient text-[#CE0059];
+    @apply text-primary;
   }
 
   .sidebar-menu.active .sidebar-menu-icon {
-    @apply rounded-md bg-[#CE0059] text-slate-200;
+    @apply rounded-md bg-custom-gradient text-slate-200;
   }
 
   .sidebar-menu.active .sidebar-menu-arrow {
-    @apply text-[#f5f3ff] dark:text-slate-200;
+    @apply text-slate-500;
   }
   .sidebar-menu.active .sidebar-menu-text {
-    @apply text-white;
+    @apply font-medium;
   }
   .sidebar.collapsed .sidebar-menu-text {
     @apply lg:hidden;
@@ -207,7 +189,7 @@
   }
 
   .sidebar.collapsed .sidebar-menu-arrow {
-    @apply hidden;
+    @apply lg:hidden;
   }
 
   .sidebar.collapsed:hover .sidebar-menu-arrow {
@@ -216,15 +198,19 @@
 
   /* Sidebar submenu */
   .sidebar-submenu {
-    @apply mt-0.5 h-0 overflow-hidden transition duration-300 ease-in-out;
+    @apply mt-0.5 max-h-0 overflow-hidden transition-all  duration-300 ease-in-out;
+  }
+
+  .sidebar-submenu.expanded-submenu {
+    @apply h-auto; /* Adjust this value to the potential height of your submenu */
   }
 
   .sidebar-submenu-item {
-    @apply block rounded py-2 pl-12 text-sm transition-colors duration-150   dark:hover:text-slate-200;
+    @apply block rounded py-2 pl-12 text-sm transition-colors duration-150;
   }
 
   .sidebar-submenu-item.active {
-    @apply text-red-500 dark:hover:text-white;
+    @apply text-primary;
   }
 
   /* Sidebar menu header */
@@ -237,18 +223,9 @@
     @apply text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300;
   }
 
-  /* Sidebar overlay */
-  .sidebar-overlay {
-    @apply invisible fixed inset-0 z-10 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out lg:hidden;
-  }
-
-  .sidebar-overlay.active {
-    @apply visible;
-  }
-
   /* Collapsed & Hovered States */
   .sidebar.collapsed .sidebar-submenu {
-    @apply hidden;
+    @apply lg:hidden;
   }
 
   .sidebar.collapsed:hover .sidebar-submenu {

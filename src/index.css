@@ -248,4 +248,11 @@
   .wrapper.expanded {
     @apply lg:ml-20;
   }
+
+  .not-found-main {
+    @apply max-w-[960px] w-full h-[calc(100vh_-_120px)] flex flex-col justify-center mx-auto px-4 py-20;
+  }
+  .not-found-main .content svg {
+    @apply absolute top-[28px] md:top-[-74px] z-0 opacity-50 text-[200px] inset-x-0;
+  }
 }

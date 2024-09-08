@@ -1,4 +1,5 @@
 import { Dispatch } from "react";
+import DarkModeSwitcher from "./DarkModeSwitcher";
 
 interface HeaderProps {
   sidebarOpen: boolean;
@@ -8,7 +9,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }: HeaderProps) => {
   return (
     <header className='sticky top-0 z-50 flex h-16 w-full items-center overflow-visible bg-white drop-shadow-sm dark:bg-slate-800'>
       {" "}
-      <div className='px-6 flex items-center justify-between'>
+      <div className='px-6 w-full flex items-center justify-between'>
         <div className='flex items-center space-x-6 overflow-visible'>
           <button
             onClick={(e) => {
@@ -22,8 +23,8 @@ const Header = ({ sidebarOpen, setSidebarOpen }: HeaderProps) => {
                 fill='none'
                 strokeWidth='0'
                 viewBox='0 0 24 24'
-                height='22'
-                width='22'
+                height='24'
+                width='24'
                 xmlns='http://www.w3.org/2000/svg'>
                 <path
                   strokeLinecap='round'
@@ -56,6 +57,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }: HeaderProps) => {
             <span className='ml-2 text-sm text-slate-400'>Search</span>
           </button>
         </div>
+        <DarkModeSwitcher />
       </div>
     </header>
   );

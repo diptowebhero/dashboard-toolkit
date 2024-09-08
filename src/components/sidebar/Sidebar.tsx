@@ -1,13 +1,8 @@
 import { logoSmall2 } from "@/assets";
 import { menuItems } from "@/menus";
 import { ChevronDown, ChevronRight } from "lucide-react";
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-
-interface SidebarProps {
-  sidebarOpen: boolean;
-  setSidebarOpen: Dispatch<SetStateAction<boolean>>;
-}
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const { pathname } = useLocation();

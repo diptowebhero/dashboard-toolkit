@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "@/hooks/useTheme";
 
-export default function DarkModeSwitcher() {
+export default function ThemeSwitcher() {
   const { setTheme } = useTheme();
 
   return (
@@ -24,7 +24,7 @@ export default function DarkModeSwitcher() {
           <span className='sr-only'>Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align='end' className='border-0'>
+      <DropdownMenuContent align='end' className='border-0 dark:bg-[#1e293b]'>
         <DropdownMenuItem onClick={() => setTheme("light")}>
           Light
         </DropdownMenuItem>

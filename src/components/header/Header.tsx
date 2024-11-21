@@ -1,5 +1,5 @@
 import { Dispatch } from "react";
-import DarkModeSwitcher from "./DarkModeSwitcher";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 interface HeaderProps {
   sidebarOpen: boolean;
@@ -57,7 +57,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }: HeaderProps) => {
             <span className='ml-2 text-sm text-slate-400'>Search</span>
           </button>
         </div>
-        <DarkModeSwitcher />
+        <ThemeSwitcher />
       </div>
     </header>
   );

@@ -56,9 +56,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
             />
           </div>
           <div className='flex flex-col logo-text'>
-            <h1 className='text-xl'>
-              Admin
-              <span className='text-[#CE0059] font-semibold'>Dashboard</span>
+            <h1 className='text-xl font-semibold'>
+              UI
+              <span className='text-[#CE0059] '>Nexus</span>
             </h1>
             <span className='whitespace-nowrap capitalize text-xs text-slate-400'>
               simple & customizable
@@ -111,15 +111,17 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   }`}
                   onClick={handleSubmenuItemClick}>
                   {item.submenu.map((sub) => (
-                    <li key={sub.name}>
-                      <Link
-                        to={sub.route}
-                        className={`sidebar-submenu-item ${
-                          isRouteActive(sub.route) ? "active" : ""
-                        }`}>
-                        {sub.name}
-                      </Link>
-                    </li>
+                    <>
+                      <li key={sub.name}>
+                        <Link
+                          to={sub.route}
+                          className={`sidebar-submenu-item ${
+                            isRouteActive(sub.route) ? "active" : ""
+                          }`}>
+                          {sub.name}
+                        </Link>
+                      </li>
+                    </>
                   ))}
                 </ul>
               )}
